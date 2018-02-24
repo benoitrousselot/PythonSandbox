@@ -1,5 +1,6 @@
 import json
 import csv
+import requests
 
 
 def BuildBasketComponents(sourceFile):
@@ -26,3 +27,8 @@ data['horizon'] = horizon
 		
 with open('jsonData.txt', 'w') as outfile:  
     json.dump(data, outfile, indent=2)
+	
+url = 'http://ps-tb-02/custom-baskets/v1/exante-analysis'
+response = requests.post(url, data = data)
+
+print(response)
